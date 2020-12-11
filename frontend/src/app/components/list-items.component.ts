@@ -23,14 +23,11 @@ export class ListItemsComponent implements OnInit {
       }
     }
 
-    console.info (this.listDetails)
-
    }
 
   async ngOnInit(): Promise<void> {
     //get tasks with a certain list ID
     this.tasks = await this.http.get<any>('/tasks/'+this.listDetails.listID).toPromise() 
-    console.info(this.tasks)
   }
 
   addNewTask(){
@@ -57,14 +54,13 @@ export class ListItemsComponent implements OnInit {
     
     this.tasks = await this.http.get<any>('/tasks/'+this.listDetails.listID).toPromise() 
 
-    console.info(this.tasks)
-
   }
 
   editListName(){
     this.router.navigate(['/editListName'], {
       state: {
         listID: this.listDetails.listID,
+        digitalOceanKey: this.listDetails.digitalOceanKey
       }
     }) 
   }

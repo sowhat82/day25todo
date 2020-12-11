@@ -17,6 +17,7 @@ export class ListsComponent implements OnInit {
 
     this.lists = await this.http.get<any>('/lists').toPromise()   
 
+    console.info(this.lists)
   }
 
   async deleteList(listID: string){

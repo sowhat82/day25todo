@@ -1,0 +1,14 @@
+<h2>Edit List Name</h2>
+
+<form [formGroup] = "editListForm" action="">
+    <div class="input-group mb-3">
+        <input formControlName = "newList" type="text" class="form-control" placeholder="Enter new list title" aria-label="Username" aria-describedby="basic-addon1">
+    </div>    
+</form>
+<br>
+<button type="button" class="btn btn-primary mx-2" [routerLink] = "['/listItems']">Back</button>
+
+<button (click) = "editListName()" type="button" class="btn btn-primary" [disabled] = "editListForm.invalid">
+    Submit
+</button>
+

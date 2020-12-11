@@ -24,8 +24,6 @@ export class NewTaskComponent implements OnInit {
         this.listDetails.digitalOceanKey = this.routeState.digitalOceanKey ;
       }
     }
-
-    console.info (this.listDetails)
    }
 
   ngOnInit(): void {

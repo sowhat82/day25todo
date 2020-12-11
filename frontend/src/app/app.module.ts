@@ -8,12 +8,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { NewListComponent } from './components/new-list.component';
 import { NewTaskComponent } from './components/new-task.component';
+import { EditListNameComponent } from './components/edit-list-name.component';
 
 const appRoutes: Routes = [
   { path: '', component: ListsComponent },
   { path: 'listItems', component: ListItemsComponent },
   { path: 'newList', component: NewListComponent },
   { path: 'newTask', component: NewTaskComponent },
+  { path: 'editListName', component: EditListNameComponent },
   ];
 
 @NgModule({
@@ -22,7 +24,8 @@ const appRoutes: Routes = [
     ListsComponent,
     ListItemsComponent,
     NewListComponent,
-    NewTaskComponent
+    NewTaskComponent,
+    EditListNameComponent
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, ReactiveFormsModule, HttpClientModule  

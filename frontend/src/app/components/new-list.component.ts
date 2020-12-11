@@ -12,7 +12,7 @@ export class NewListComponent implements OnInit {
 
   newListForm: FormGroup
   digitalOceanKey: any
-  file: string
+  file: string = ""
 
   constructor(private fb: FormBuilder, private router: Router, private http: HttpClient) { }
 
@@ -35,16 +35,21 @@ export class NewListComponent implements OnInit {
   async addNewList(){
 
     // add image to digital ocean
-    const formData = new FormData();
+    
+    if(this.file != ""){
+      console.info(this.file)
+      const formData = new FormData();
 
-    // formData.set('name', this.newListForm.get('profile').value);
-    formData.set('name', 'test');
-
-    formData.set('image-file', this.file);
-
-    this.digitalOceanKey = await this.http.post<any>('/uploadImage', formData).toPromise()
-
-    console.info(this.digitalOceanKey)
+      // formData.set('name', this.newListForm.get('profile').value);
+      formData.set('name', 'test');
+  
+      formData.set('image-file', this.file);
+  
+      this.digitalOceanKey = await this.http.post<any>('/uploadImage', formData).toPromise()  
+    }
+    else{
+      this.digitalOceanKey = {}
+    }
 
     const params = new HttpParams()
     .set('listName', this.newListForm.get('newList').value)
