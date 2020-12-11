@@ -19,6 +19,7 @@ export class ListItemsComponent implements OnInit {
       if (this.routeState) {
         this.listDetails.listID = this.routeState.listID ? JSON.parse(this.routeState.listID) : '';
         this.listDetails.listName = this.routeState.listName   ;
+        this.listDetails.digitalOceanKey = this.routeState.digitalOceanKey  ;
       }
     }
 
@@ -37,7 +38,8 @@ export class ListItemsComponent implements OnInit {
     this.router.navigate(['/newTask'], {
       state: {
         listID: this.listDetails.listID,
-        listName: this.listDetails.listName
+        listName: this.listDetails.listName,
+        digitalOceanKey: this.listDetails.digitalOceanKey
       }
     }) 
   }
@@ -59,4 +61,11 @@ export class ListItemsComponent implements OnInit {
 
   }
 
+  editListName(){
+    this.router.navigate(['/editListName'], {
+      state: {
+        listID: this.listDetails.listID,
+      }
+    }) 
+  }
 }

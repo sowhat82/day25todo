@@ -21,6 +21,7 @@ export class NewTaskComponent implements OnInit {
       if (this.routeState) {
         this.listDetails.listID = this.routeState.listID ? JSON.parse(this.routeState.listID) : '';
         this.listDetails.listName = this.routeState.listName ;
+        this.listDetails.digitalOceanKey = this.routeState.digitalOceanKey ;
       }
     }
 
@@ -61,7 +62,8 @@ export class NewTaskComponent implements OnInit {
     this.router.navigate(['/listItems'],{
       state: {
         listID: this.listDetails.listID,
-        listName: this.listDetails.listName
+        listName: this.listDetails.listName,  
+        digitalOceanKey: this.listDetails.digitalOceanKey
       }
     })
   }

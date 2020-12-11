@@ -1,5 +1,14 @@
-<h2>{{listDetails.listName}}</h2>
+<div class="card" style="width: 25rem;">
+  <img src="https://day25todo.fra1.digitaloceanspaces.com/{{listDetails.digitalOceanKey}}" class="img-fluid" width="100%">
+  <div class="card-body">
+    <h5 class="card-text">{{listDetails.listName}} <button (click) = "editListName()" class="badge bg-primary rounded-pill float-right">Edit</button> </h5>
+    
+  </div>
+</div>
+
 <!-- <h2>List ID {{listDetails.listID}}</h2> -->
+
+
 
 <br>
   <ul class="list-group">

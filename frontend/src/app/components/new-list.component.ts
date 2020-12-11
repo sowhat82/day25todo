@@ -46,15 +46,16 @@ export class NewListComponent implements OnInit {
 
     console.info(this.digitalOceanKey)
 
-    const newList = new HttpParams()
+    const params = new HttpParams()
     .set('listName', this.newListForm.get('newList').value)
+    .set('digitalOceanKey', this.digitalOceanKey.key)
 
     const httpHeaders = new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
 //    .set('Access-Control-Allow-Origin', 'http://localhost:4200');
 
 // const result = await this.http.post('/order', newList.toString(), {headers: httpHeaders}).toPromise()  
-    await this.http.post('/addList', newList.toString(), {headers: httpHeaders}).toPromise().then(
+    await this.http.post('/addList', params, {headers: httpHeaders}).toPromise().then(
       function() {
         // success callback
 //          window.alert('Order Added!')

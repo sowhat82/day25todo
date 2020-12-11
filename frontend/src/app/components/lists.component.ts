@@ -16,7 +16,7 @@ export class ListsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
 
     this.lists = await this.http.get<any>('/lists').toPromise()   
-  
+
   }
 
   async deleteList(listID: string){
@@ -27,16 +27,15 @@ export class ListsComponent implements OnInit {
     
     this.lists = await this.http.get<any>('/lists').toPromise()   
 
-    console.info(this.lists)
-
   }
 
-  routeToListItems(listID: number, listName: string){
+  routeToListItems(listID: number, listName: string, digitalOceanKey: string){
 
     this.router.navigate(['/listItems'], {
       state: {
         listID: listID,
-        listName: listName
+        listName: listName,
+        digitalOceanKey: digitalOceanKey
       }
     }) 
 
