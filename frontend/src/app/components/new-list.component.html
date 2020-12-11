@@ -1,0 +1,14 @@
+<h2>New List</h2>
+
+<form [formGroup] = "newListForm" action="">
+    <div class="input-group mb-3">
+        <input formControlName = "newList" type="text" class="form-control" placeholder="Enter list title" aria-label="Username" aria-describedby="basic-addon1">
+    </div>    
+</form>
+
+<button type="button" class="btn btn-primary mx-2" [routerLink] = "['/']">Back</button>
+
+<button (click) = "addNewList()" type="button" class="btn btn-primary" [disabled] = "newListForm.invalid">
+    Submit
+</button>
+

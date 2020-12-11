@@ -1,0 +1,11 @@
+<br>
+  <ul class="list-group">
+    <li *ngFor = "let l of lists" class="list-group-item d-flex justify-content-between align-items-center">
+        <span class="d-none">{{l.listID}}</span>
+        <a (click) = "routeToListItems(l.listID, l.listName)" class="list-group-item list-group-item-action list-group-item-primary">{{l.listName}}</a>
+        <span class="badge bg-primary rounded-pill">{{l.taskCount}}</span>
+        <button type="button" class="btn btn-danger" (click)="deleteList(l.listID)">Delete</button>    </li>
+  </ul>
+<br>
+
+  <button type="button" class="btn btn-primary" [routerLink] = "['/newList']">New List</button>

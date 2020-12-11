@@ -1,0 +1,14 @@
+<h2>New Task</h2>
+
+<form [formGroup] = "newTaskForm" action="">
+    <div class="input-group mb-3">
+        <input formControlName = "newTask" type="text" class="form-control" placeholder="Enter list title" aria-label="Username" aria-describedby="basic-addon1">
+    </div>    
+</form>
+
+<button type="button" class="btn btn-primary mx-2" [routerLink] = "['/']">Back</button>
+
+<button (click) = "addNewTask()" type="button" class="btn btn-primary" [disabled] = "newTaskForm.invalid">
+    Submit
+</button>
+
