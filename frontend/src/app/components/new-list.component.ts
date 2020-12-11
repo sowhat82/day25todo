@@ -11,17 +11,29 @@ import { Router } from '@angular/router';
 export class NewListComponent implements OnInit {
 
   newListForm: FormGroup
-
+  digitalOceanKey: any
   constructor(private fb: FormBuilder, private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
 
+
     this.newListForm = this.fb.group({
       newList: this.fb.control('', [Validators.required]),
+      profile: ['']
     })
   }
 
   async addNewList(){
+
+    // add image to digital ocean
+    const formData = new FormData();
+    formData.set('file', this.newListForm.get('profile').value);
+    formData.set('name', this.newListForm.get('profile').value);
+    formData.set('image-file', this.newListForm.get('profile').value.nativeElement.files[0]);
+
+    this.digitalOceanKey = await this.http.post<any>('/uploadImage', formData).toPromise()
+
+
     const newList = new HttpParams()
     .set('listName', this.newListForm.get('newList').value)
 
@@ -45,4 +57,12 @@ export class NewListComponent implements OnInit {
     )
     this.router.navigate(['/'])
   }
+
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.newListForm.get('profile').setValue(file);
+    }
+  }
+
 }
