@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -12,6 +12,8 @@ export class NewListComponent implements OnInit {
 
   newListForm: FormGroup
   digitalOceanKey: any
+  file: string
+
   constructor(private fb: FormBuilder, private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -19,20 +21,30 @@ export class NewListComponent implements OnInit {
 
     this.newListForm = this.fb.group({
       newList: this.fb.control('', [Validators.required]),
-      profile: ['']
+      imageFile: ['']
     })
+  }
+
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      this.file = event.target.files[0];
+      this.newListForm.get('imageFile').setValue(this.file);
+    }
   }
 
   async addNewList(){
 
     // add image to digital ocean
     const formData = new FormData();
-    formData.set('file', this.newListForm.get('profile').value);
-    formData.set('name', this.newListForm.get('profile').value);
-    formData.set('image-file', this.newListForm.get('profile').value.nativeElement.files[0]);
+
+    // formData.set('name', this.newListForm.get('profile').value);
+    formData.set('name', 'test');
+
+    formData.set('image-file', this.file);
 
     this.digitalOceanKey = await this.http.post<any>('/uploadImage', formData).toPromise()
 
+    console.info(this.digitalOceanKey)
 
     const newList = new HttpParams()
     .set('listName', this.newListForm.get('newList').value)
@@ -58,11 +70,6 @@ export class NewListComponent implements OnInit {
     this.router.navigate(['/'])
   }
 
-  onFileSelect(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.newListForm.get('profile').setValue(file);
-    }
-  }
+
 
 }
