@@ -65,4 +65,14 @@ export class NewTaskComponent implements OnInit {
       }
     })
   }
+
+  routeToListItems(){
+    this.router.navigate(['/listItems'],{
+      state: {
+        listID: this.listDetails.listID,
+        listName: this.listDetails.listName,  
+        digitalOceanKey: this.listDetails.digitalOceanKey
+      }
+    })
+  }
 }

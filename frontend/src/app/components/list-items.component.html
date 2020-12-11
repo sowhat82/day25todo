@@ -1,7 +1,7 @@
 <div class="card" style="width: 18rem;">
   <img *ngIf = "listDetails.digitalOceanKey !== 'undefined'" src="https://day25todo.fra1.digitaloceanspaces.com/{{listDetails.digitalOceanKey}}" class="img-fluid" width="100%">
   <div class="card-body">
-    <h5 class="card-text">{{listDetails.listName}} <button (click) = "editListName()" class="badge bg-primary rounded-pill float-right">Edit</button> </h5>
+    <h2 class="card-text">{{listDetails.listName}} <button (click) = "editListName()" class="badge bg-primary rounded-pill float-right">Edit</button> </h2>
     
   </div>
 </div>

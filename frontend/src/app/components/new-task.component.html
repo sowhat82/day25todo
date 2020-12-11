@@ -6,7 +6,7 @@
     </div>    
 </form>
 
-<button type="button" class="btn btn-primary mx-2" [routerLink] = "['/']">Back</button>
+<button type="button" class="btn btn-primary mx-2" (click) = "routeToListItems()">Back</button>
 
 <button (click) = "addNewTask()" type="button" class="btn btn-primary" [disabled] = "newTaskForm.invalid">
     Submit
