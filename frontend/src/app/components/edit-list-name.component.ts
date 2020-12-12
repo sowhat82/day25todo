@@ -20,6 +20,7 @@ export class EditListNameComponent implements OnInit {
       this.routeState = this.router.getCurrentNavigation().extras.state;
       if (this.routeState) {
         this.listDetails.listID = this.routeState.listID ? JSON.parse(this.routeState.listID) : '';
+        this.listDetails.listName = this.routeState.listName;
         this.listDetails.digitalOceanKey = this.routeState.digitalOceanKey;
       }
     }
@@ -62,5 +63,15 @@ export class EditListNameComponent implements OnInit {
         })
   }
     
+  routeToListItems(){
+    this.router.navigate(['/listItems'], {
+      state: {
+        listID: this.listDetails.listID,
+        listName: this.listDetails.listName,
+        digitalOceanKey: this.listDetails.digitalOceanKey
+      }
+    })
+
+  }
 }
 

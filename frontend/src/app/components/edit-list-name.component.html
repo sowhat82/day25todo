@@ -6,7 +6,7 @@
     </div>    
 </form>
 <br>
-<button type="button" class="btn btn-primary mx-2" [routerLink] = "['/listItems']">Back</button>
+<button (click) = "routeToListItems()"type="button" class="btn btn-primary mx-2">Back</button>
 
 <button (click) = "editListName()" type="button" class="btn btn-primary" [disabled] = "editListForm.invalid">
     Submit

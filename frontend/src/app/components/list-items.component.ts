@@ -60,6 +60,7 @@ export class ListItemsComponent implements OnInit {
     this.router.navigate(['/editListName'], {
       state: {
         listID: this.listDetails.listID,
+        listName: this.listDetails.listName,
         digitalOceanKey: this.listDetails.digitalOceanKey
       }
     }) 
