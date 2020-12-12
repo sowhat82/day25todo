@@ -300,7 +300,7 @@ app.post('/uploadImage', multipart.single('image-file'),
 );
 
 
-
+app.use(express.static ( __dirname + '/frontend'))
 
 // start the app
 startApp(app, pool)
